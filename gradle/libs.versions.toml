@@ -1,7 +1,6 @@
 [versions]
 agp = "8.5.2"
 kotlin = "2.0.20"
-converterMoshi = "2.11.0"
 koinBom = "3.5.6"
 coreKtx = "1.13.1"
 junit = "4.13.2"
@@ -9,14 +8,17 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 kotlinxCoroutinesAndroid = "1.8.1"
 lifecycleExtensions = "2.2.0"
-lifecycleRuntimeKtx = "2.8.4"
-activityCompose = "1.9.1"
-composeBom = "2024.08.00"
+lifecycleRuntimeKtx = "2.8.6"
+activityCompose = "1.9.3"
+composeBom = "2024.10.00"
 loggingInterceptor = "4.12.0"
-moshiKotlin = "1.15.1"
-navigationCompose = "2.7.7"
+navigationCompose = "2.8.3"
 ksp = "2.0.20-1.0.24"
 retrofit = "2.11.0"
+kotlinxSerializationJson = "1.7.2"
+converterKotlinxSerialization = "2.11.0"
+
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -45,12 +47,13 @@ koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koinBom" }
 
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 
-#retrofit and moshi
+#retrofit and serialization
 logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptor" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
-converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "converterMoshi" }
-moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshiKotlin" }
-moshi-kotlin-codegen = { module = "com.squareup.moshi:moshi-kotlin-codegen", version.ref = "moshiKotlin" }
+converter-kotlinx-serialization = { module = "com.squareup.retrofit2:converter-kotlinx-serialization", version.ref = "converterKotlinxSerialization" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+
+
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 
@@ -59,4 +62,5 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlinx = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

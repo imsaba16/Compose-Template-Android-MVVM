@@ -2,20 +2,22 @@ package com.sample.composebaseapp.di.module
 
 import com.sample.composebaseapp.constants.Constants
 import com.sample.composebaseapp.di.api.ApiService
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.kotlinx.serialization.asConverterFactory
+
+
+val json = Json {
+    ignoreUnknownKeys = true
+    isLenient = true
+    prettyPrint = true
+}
 
 val apiModule = module {
-    single {
-        Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
-    }
 
     single {
         OkHttpClient.Builder()
@@ -29,7 +31,7 @@ val apiModule = module {
         Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
             .client(get())
-            .addConverterFactory(MoshiConverterFactory.create(get()))
+            .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .build()
     }
 

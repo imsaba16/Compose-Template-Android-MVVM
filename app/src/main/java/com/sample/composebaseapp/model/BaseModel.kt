@@ -1,6 +1,6 @@
 package com.sample.composebaseapp.model
 
-import com.squareup.moshi.JsonClass
+import kotlinx.serialization.Serializable
 
-@JsonClass(generateAdapter = true)
-data class BaseModel(val name: String)
+@Serializable
+data class BaseModel(val fact: String)
